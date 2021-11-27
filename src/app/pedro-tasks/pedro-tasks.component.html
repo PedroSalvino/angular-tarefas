@@ -1,0 +1,50 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-md-10 mx-auto">
+      <h2 class="text-center h3">Adicionar Tasks</h2>
+
+      <div class="card">
+        <div class="card-body">
+          <div class="form-group">
+            <label for="tarefa">Nome da Tarefa</label>
+            <input
+              class="form-control"
+              type="text"
+              id="tarefa"
+              #tarefa
+              minlength="3"
+            />
+          </div>
+          <div class="d-grid col-8 mx-auto my-2">
+            <button
+              class="btn btn-warning"
+              (click)="
+                this.listaTasks.adicionarTask(tarefa.value); tarefa.value = ''
+              "
+            >
+              Adicionar
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <h2 class="text-center h3 mt-3 text-primary">Tarefas Adicionadas</h2>
+      <div class="card my-1">
+        <div class="card-body">
+          <ul *ngFor="let task of this.listaTasks.getTasks(); index as i">
+            <li>
+              {{ i + 1 }}. {{ task.nome }}
+              <button
+                class="btn btn-sm btn-danger px-3 py-2 mx-2"
+                (click)="this.listaTasks.removerTask(i)"
+              >
+                x
+              </button>
+            </li>
+            <hr />
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
